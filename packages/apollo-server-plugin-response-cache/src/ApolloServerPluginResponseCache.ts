@@ -168,6 +168,7 @@ export default function plugin(
             });
             const serializedValue = await cache.get(key);
             if (serializedValue === undefined) {
+              requestContext.plugin = { cacheKey: key, ...(requestContext.plugin || {} ) }
               return null;
             }
 
